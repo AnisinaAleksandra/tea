@@ -1,0 +1,193 @@
+<div
+  class="cont wow swing center form_order col-lg-6 pt-5 pb-5"
+  style="margin: 0 auto"
+>
+  <p class="h2 text-center mb-5">{{ orderTitle }}</p>
+  <div class="container">
+    <form
+      class="row g-3"
+      #form
+      novalidate
+      [formGroup]="orderForm"
+      *ngIf="myOrderFormView"
+    >
+      <div class="col-md-6">
+        <label for="inputName" class="form-label">Имя</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputName"
+          name="name"
+          formControlName="name"
+        />
+        <div
+          class="invalid-errors"
+          *ngIf="orderForm.get('name')?.invalid 
+        && (orderForm.get('name')?.touched || orderForm.get('name')?.dirty)
+        && (orderForm.get('name')?.errors?.['required']|| orderForm.get('name')?.errors?.['pattern'])"
+        >
+          <span
+            class="error-text"
+            *ngIf="orderForm.get('name')?.errors?.['required']"
+            >Необходимо ввести имя</span
+          >
+          <span
+            class="error-text"
+            *ngIf="orderForm.get('name')?.errors?.['pattern']"
+            >Можно ввести только буквы</span
+          >
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="inputName" class="form-label">Фамилия</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputLastName"
+          name="last_name"
+          formControlName="last_name"
+        />
+        <div
+          class="invalid-errors"
+          *ngIf="orderForm.get('last_name')?.invalid 
+      && (orderForm.get('last_name')?.touched || orderForm.get('last_name')?.dirty)
+      && (orderForm.get('last_name')?.errors?.['required']|| orderForm.get('last_name')?.errors?.['pattern'])"
+        >
+          <span
+            class="error-text"
+            *ngIf="orderForm.get('last_name')?.errors?.['required']"
+            >Необходимо ввести имя</span
+          >
+          <span
+            class="error-text"
+            *ngIf="orderForm.get('last_name')?.errors?.['pattern']"
+            >Можно ввести только буквы</span
+          >
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="inputPhone" class="form-label">Телефон</label>
+        <input
+          type="number"
+          class="form-control"
+          id="inputPhone"
+          name="phone"
+          formControlName="phone"
+        />
+        <div
+          class="invalid-errors"
+          *ngIf="orderForm.get('phone')?.invalid 
+      && (orderForm.get('phone')?.touched || orderForm.get('phone')?.dirty)
+      && (orderForm.get('phone')?.errors?.['required']|| orderForm.get('phone')?.errors?.['pattern'] || orderForm.get('phone')?.errors?.['minlength'])"
+        >
+          <span
+            class="error-text"
+            *ngIf="orderForm.get('phone')?.errors?.['required']"
+            >Необходимо ввести телефон</span
+          >
+          <span
+            class="error-text"
+            *ngIf="orderForm.get('phone')?.errors?.['pattern']"
+            >Можно вводить только цифры и '+', 11 цифр</span
+          >
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="inputProduct" class="form-label">Товар</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputProduct"
+          name="product"
+          value="product"
+          formControlName="product"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="inputCountry" class="form-label">Страна</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputProduct"
+          name="country"
+          formControlName="country"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="inputAddress" class="form-label">Адрес</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputAddress"
+          name="address"
+          formControlName="address"
+        />
+        <div
+          class="invalid-errors"
+          *ngIf="orderForm.get('address')?.invalid 
+      && (orderForm.get('address')?.touched || orderForm.get('address')?.dirty)
+      && (orderForm.get('address')?.errors?.['required'] || orderForm.get('address')?.errors?.['pattern'])"
+        >
+          <span
+            class="error-text"
+            *ngIf="orderForm.get('address')?.errors?.['required']"
+            >Необходимо ввести адрес</span
+          >
+          <span
+            class="error-text"
+            *ngIf="orderForm.get('address')?.errors?.['pattern']"
+            >Можно вводить цифры, буквы, дефисы, пробелы и слеш</span
+          >
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="inputIndex" class="form-label">Индекс</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputIndex"
+          name="zip"
+          formControlName="zip"
+        />
+        <div
+          class="invalid-errors"
+          *ngIf="orderForm.get('zip')?.invalid 
+    && (orderForm.get('zip')?.touched || orderForm.get('zip')?.dirty)
+    && orderForm.get('zip')?.errors?.['required']"
+        >
+          <span
+            class="error-text"
+            *ngIf="orderForm.get('zip')?.errors?.['required']"
+            >Необходимо ввести индекс</span
+          >
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="comment" class="form-label">Комментарий к заказу</label>
+        <textarea
+          class="form-control"
+          name="comment"
+          id="comment"
+          formControlName="comment"
+        ></textarea>
+      </div>
+      <div class="col-12">
+        <button
+          type="submit"
+          class="btn btn-primary hvr-sweep-to-right"
+          id="send-btn"
+          style="padding: 7px 37px; margin-right: 8px"
+          (click)="sendOrderForm()"
+          [disabled]="orderForm.invalid || orderForm.disabled"
+        >
+          Отправить
+        </button>
+        <div *ngIf="isError" class="text-danger">
+          Произошла ошибка. Попробуйте еще раз.
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="card">
+  <a href="{{ productItem.image }}" class="card-img-top">
+    <img
+      class="w-100"
+      src="{{ productItem.image }}"
+      alt="tesImage"
+      id="{{ productItem.id }}"
+    />
+  </a>
+  <div class="card-body d-flex justify-content-between flex-column">
+    <h5 class="card-title">{{ productItem.title }}</h5>
+    <p class="card-text">{{ productItem.description | shortText }}</p>
+    <div>
+      <a
+      class="btn btn-primary hvr-grow-shadow"
+      style="padding: 7px 41px"
+      (click)="openCardTea()"
+      [routerLink]="['/product',productItem.id]"
+        >Подробнее</a>
+    </div>
+  </div>
+</div>

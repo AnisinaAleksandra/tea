@@ -1,0 +1,14 @@
+<div class="container-part_list_of_tea pt-5">
+  <p class="h2 text-center mb-5">Наши чайные коллекции</p>
+
+  <div class="container">
+    <div class="row" >
+      <product-item
+        *ngFor="let productItem of productItemList; let i = index"
+        [productItem]="productItem"
+        [ngStyle]="{'width': 'unset'}"
+        (openCardTeaEvent)="openCardTeaProduct($event)"
+      ></product-item>
+    </div>
+  </div>
+</div>

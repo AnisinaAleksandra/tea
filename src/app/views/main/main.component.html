@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="opacity-100 mt-5 position-relative">
+    <div
+      class="d-flex flex-column justify-content-center first-slide fade-slide align-items-start"
+    >
+      <p class="title h1 fw-light text-md-start-start fw-bold">
+        Скидки на травянные чаи
+      </p>
+      <p class="text mt-sm-0 md-4">Узай все подробности, заполнив заявку</p>
+      <button
+        type="button"
+        class="btn btn-primary d-block mt-sm-0 md-5"
+        style="padding: 7px 45px"
+      >
+        Заполнить
+      </button>
+    </div>
+  </div>
+</div>
+<div class="container questions pt-5 wow pulse">
+  <p class="h2 text-center mb-4">Ответы на часто задаваемые вопросы</p>
+<ngbd-accordion-preventchange></ngbd-accordion-preventchange>
+
+</div>
+<ng-template #popup let-modal>
+<div
+  id="myModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-modal="true"
+  role="dialog"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Посмотрите наши чайные коллекции</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" [routerLink]="'/product'" (click)="modal.dismiss('Cross click')">Смотреть</button>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-template>

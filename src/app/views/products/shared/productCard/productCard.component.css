@@ -1,0 +1,8 @@
+.card {
+  width: 450px;
+}
+
+product-card-component {
+  display: flex;
+  justify-content: center;
+}
